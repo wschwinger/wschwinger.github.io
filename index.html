@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世说心语-心灵成长与情感共鸣的温暖社区</title>
+    <meta name="description" content="世说心语是一个专注于心灵成长、情感表达与生活哲思的温暖社区。在这里，你可以阅读触动心弦的文字，分享自己的心情故事，在喧嚣世界中找到一片宁静的精神家园。">
+    <meta name="keywords" content="世说心语,心灵成长,情感语录,心情分享,生活哲思,暖心文字,心理治愈">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: #faf8f5;
+            color: #3d3d3a;
+            line-height: 1.7;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== Header & Navigation ===== */
+        .site-header {
+            background: #ffffff;
+            border-bottom: 1px solid #f0ebe3;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            font-size: 28px;
+            color: #c49a6c;
+        }
+        .logo-text {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #4a3f35;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 30px;
+        }
+        .main-nav ul li a {
+            font-size: 15px;
+            color: #5a524a;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.25s;
+            font-weight: 400;
+        }
+        .main-nav ul li a:hover,
+        .main-nav ul li a.active {
+            color: #b0885a;
+            border-bottom-color: #c49a6c;
+        }
+        .nav-action {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .nav-search {
+            display: flex;
+            align-items: center;
+            background: #f5f1ec;
+            border-radius: 30px;
+            padding: 6px 16px;
+            gap: 8px;
+        }
+        .nav-search input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+            width: 130px;
+            color: #3d3d3a;
+        }
+        .nav-search input::placeholder {
+            color: #a9a094;
+        }
+        .nav-search span {
+            color: #b0885a;
+            font-size: 14px;
+        }
+        .btn-write {
+            background: #c49a6c;
+            color: #fff;
+            font-size: 14px;
+            padding: 8px 18px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 400;
+            display: inline-block;
+        }
+        .btn-write:hover {
+            background: #ad8356;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #5a524a;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            background: linear-gradient(135deg, #f6f0e8 0%, #ede4d8 50%, #f2ece2 100%);
+            padding: 70px 0 90px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -80px;
+            top: -80px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(196,154,108,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content {
+            flex: 1.2;
+        }
+        .hero-content h1 {
+            font-size: 44px;
+            font-weight: 600;
+            color: #3b3128;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .hero-content h1 span {
+            color: #b0885a;
+        }
+        .hero-content p {
+            font-size: 17px;
+            color: #6b6157;
+            max-width: 560px;
+            margin-bottom: 28px;
+            line-height: 1.9;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #4a3f35;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-size: 15px;
+            transition: all 0.3s;
+            display: inline-block;
+            border: 2px solid #4a3f35;
+        }
+        .btn-primary:hover {
+            background: transparent;
+            color: #4a3f35;
+        }
+        .btn-outline {
+            border: 2px solid #b0885a;
+            color: #b0885a;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-size: 15px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .btn-outline:hover {
+            background: #b0885a;
+            color: #fff;
+        }
+        .hero-quote {
+            flex: 0.8;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid #e8ddcf;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            text-align: center;
+        }
+        .hero-quote .quote-mark {
+            font-size: 40px;
+            color: #c49a6c;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .hero-quote blockquote {
+            font-size: 17px;
+            color: #4a3f35;
+            font-style: italic;
+            line-height: 1.9;
+            margin: 15px 0;
+        }
+        .hero-quote .quote-author {
+            color: #a09080;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== Section common ===== */
+        .section {
+            padding: 65px 0;
+        }
+        .section-title-wrap {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+        .section-title {
+            font-size: 30px;
+            color: #3b3128;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #c49a6c;
+            border-radius: 3px;
+        }
+        .section-subtitle {
+            color: #8a7d6f;
+            font-size: 15px;
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        /* ===== Featured / Cards ===== */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .feature-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px 26px;
+            border: 1px solid #eee7de;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+        }
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            background: #f6efe7;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 18px;
+            color: #b0885a;
+        }
+        .feature-card h3 {
+            font-size: 19px;
+            color: #3b3128;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .feature-card p {
+            font-size: 14px;
+            color: #7a6f63;
+            line-height: 1.8;
+        }
+
+        /* ===== Articles List ===== */
+        .dual-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .article-item {
+            display: flex;
+            gap: 20px;
+            padding: 24px 0;
+            border-bottom: 1px solid #eee5db;
+        }
+        .article-item:last-child {
+            border-bottom: none;
+        }
+        .article-thumb {
+            width: 120px;
+            height: 90px;
+            background: #e8ddd0;
+            border-radius: 10px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #a08a72;
+        }
+        .article-info h3 {
+            font-size: 18px;
+            color: #3b3128;
+            margin-bottom: 6px;
+            line-height: 1.4;
+            transition: color 0.2s;
+        }
+        .article-info h3:hover {
+            color: #b0885a;
+        }
+        .article-meta {
+            font-size: 13px;
+            color: #a09080;
+            margin-bottom: 8px;
+            display: flex;
+            gap: 12px;
+        }
+        .article-info p {
+            font-size: 14px;
+            color: #6d6258;
+            line-height: 1.7;
+        }
+        .category-tag {
+            background: #f6efe7;
+            color: #b0885a;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* ===== Sidebar ===== */
+        .sidebar {
+            background: #fff;
+            border-radius: 16px;
+            padding: 26px;
+            border: 1px solid #eee7de;
+        }
+        .sidebar-title {
+            font-size: 18px;
+            color: #3b3128;
+            font-weight: 600;
+            padding-bottom: 14px;
+            border-bottom: 2px solid #f0e8df;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sidebar-title span {
+            color: #b0885a;
+        }
+        .hot-topic-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed #f0e8df;
+            gap: 12px;
+        }
+        .hot-topic-item:last-child {
+            border-bottom: none;
+        }
+        .hot-num {
+            width: 26px;
+            height: 26px;
+            background: #f6efe7;
+            color: #b0885a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .hot-topic-item h4 {
+            font-size: 15px;
+            color: #4a3f35;
+            font-weight: 500;
+            flex: 1;
+            line-height: 1.4;
+        }
+        .hot-topic-item .hot-count {
+            font-size: 12px;
+            color: #b3a698;
+        }
+
+        /* ===== Quote Wall ===== */
+        .quote-section {
+            background: #f3ede5;
+        }
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .quote-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px 22px;
+            text-align: center;
+            border-left: 3px solid #c49a6c;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .quote-card p {
+            font-size: 15px;
+            color: #5a524a;
+            font-style: italic;
+            line-height: 1.9;
+            margin-bottom: 12px;
+        }
+        .quote-card .author {
+            font-size: 13px;
+            color: #b3a698;
+        }
+
+        /* ===== Community CTA ===== */
+        .community-cta {
+            background: #4a3f35;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .community-cta h2 {
+            color: #faf6f0;
+            font-size: 30px;
+            margin-bottom: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .community-cta p {
+            color: #c8bcae;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 16px;
+        }
+        .btn-light {
+            background: #c49a6c;
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 40px;
+            font-size: 16px;
+            border: 2px solid #c49a6c;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .btn-light:hover {
+            background: transparent;
+            color: #c49a6c;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-wrap {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 22px 26px;
+            margin-bottom: 16px;
+            border: 1px solid #eee7de;
+        }
+        .faq-item h3 {
+            font-size: 17px;
+            color: #3b3128;
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .faq-item h3::before {
+            content: "Q";
+            background: #f6efe7;
+            color: #b0885a;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+        .faq-item p {
+            font-size: 14px;
+            color: #6d6258;
+            padding-left: 34px;
+            line-height: 1.8;
+        }
+
+        /* ===== Footer ===== */
+        .site-footer {
+            background: #2f2a25;
+            padding: 50px 0 20px;
+            color: #a89b8d;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            color: #eee6dc;
+            font-size: 16px;
+            margin-bottom: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .footer-col ul li a:hover {
+            color: #c49a6c;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid #3f3932;
+            font-size: 13px;
+            color: #7c7165;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 992px) {
+            .featured-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .quote-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .dual-layout {
+                grid-template-columns: 1fr;
+            }
+            .hero-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-quote {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+            .nav-search {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .header-inner {
+                height: 60px;
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+            .hero {
+                padding: 50px 0;
+            }
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            .section-title {
+                font-size: 24px;
+            }
+            .featured-grid,
+            .quote-grid {
+                grid-template-columns: 1fr;
+            }
+            .article-item {
+                flex-direction: column;
+            }
+            .article-thumb {
+                width: 100%;
+                height: 130px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .section {
+                padding: 45px 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .btn-write {
+                padding: 6px 14px;
+                font-size: 13px;
+            }
+            .hero-content h1 {
+                font-size: 27px;
+            }
+            .hero-quote {
+                padding: 25px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <span class="logo-icon">✦</span>
+            <span class="logo-text">世说心语</span>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">心语文章</a></li>
+                <li><a href="#">情感电台</a></li>
+                <li><a href="#">成长树洞</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </nav>
+        <div class="nav-action">
+            <div class="nav-search">
+                <span>🔍</span>
+                <input type="text" placeholder="搜索心语...">
+            </div>
+            <button class="btn-write">✏️ 写心情</button>
+            <button class="menu-toggle">☰</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero 首屏 -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <h1>在喧嚣的世界里<br><span>听见内心的声音</span></h1>
+                <p>「世说心语」是一个专注心灵成长与情感表达的温暖角落。我们相信每一份心情都值得被倾听，每一个故事都能照亮他人。在这里，用文字安放情绪，让共鸣连接你我。</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary">开始阅读</a>
+                    <a href="#" class="btn-outline">分享你的故事</a>
+                </div>
+            </div>
+            <div class="hero-quote">
+                <div class="quote-mark">"</div>
+                <blockquote>心若没有栖息的地方，到哪里都是在流浪。愿每一个灵魂都能在此找到归属。</blockquote>
+                <div class="quote-author">—— 世说心语 · 编辑手记</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心栏目 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title-wrap">
+                <h2 class="section-title">心语栏目</h2>
+                <p class="section-subtitle">不同的频道，同样的温度</p>
+            </div>
+            <div class="featured-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>深夜随笔</h3>
+                    <p>在安静的夜晚，用细腻的文字记录白昼的喧嚣与心底的涟漪。每周更新原创随笔，陪你度过每一个需要被理解的时刻。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>情感信箱</h3>
+                    <p>匿名倾诉你的困惑与心事，无论是亲情、友情还是爱情，我们都会认真倾听，并给予真诚而温暖的回应。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <h3>成长手记</h3>
+                    <p>记录平凡生活中的自我觉察与蜕变瞬间。关于选择、迷茫、勇气与坚持，也许你能在这里找到自己的影子。</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文章列表 + 侧边栏 -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-title-wrap">
+                <h2 class="section-title">今日心语</h2>
+                <p class="section-subtitle">那些值得被看见的文字与心情</p>
+            </div>
+            <div class="dual-layout">
+                <div>
+                    <article class="article-item">
+                        <div class="article-thumb">🌙</div>
+                        <div class="article-info">
+                            <span class="category-tag">随笔</span>
+                            <h3>慢下来，才能听见内心的声音</h3>
+                            <div class="article-meta">
+                                <span>2025.03.28</span>
+                                <span>· 阅读 2.3k</span>
+                            </div>
+                            <p>我们总是被时间推着向前奔跑，却很少停下来问一问自己：这真的是我想要的吗？学会慢下来，不是懈怠，而是重新与内心建立连接的方式...</p>
+                        </div>
+                    </article>
+                    <article class="article-item">
+                        <div class="article-thumb">💌</div>
+                        <div class="article-info">
+                            <span class="category-tag">情感</span>
+                            <h3>写给那个曾经很在意的人</h3>
+                            <div class="article-meta">
+                                <span>2025.03.27</span>
+                                <span>· 阅读 1.8k</span>
+                            </div>
+                            <p>有些话，当时没有说出口，后来就再也没有机会说了。但没关系，那些未完成的心事，也是我们生命里温柔的印记...</p>
+                        </div>
+                    </article>
+                    <article class="article-item">
+                        <div class="article-thumb">🌄</div>
+                        <div class="article-info">
+                            <span class="category-tag">成长</span>
+                            <h3>接纳不完美的自己，是一种勇气</h3>
+                            <div class="article-meta">
+                                <span>2025.03.26</span>
+                                <span>· 阅读 3.1k</span>
+                            </div>
+                            <p>完美主义像一把无形的尺子，不断丈量着我们的缺憾。但真正的成长，往往始于我们坦然说出：是的，我不完美，但那又怎样呢？...</p>
+                        </div>
+                    </article>
+                    <article class="article-item">
+                        <div class="article-thumb">☕</div>
+                        <div class="article-info">
+                            <span class="category-tag">生活</span>
+                            <h3>平凡日子里的微光时刻</h3>
+                            <div class="article-meta">
+                                <span>2025.03.25</span>
+                                <span>· 阅读 1.2k</span>
+                            </div>
+                            <p>清晨的一杯热咖啡、路边盛开的小花、陌生人的一个微笑……这些看似微不足道的瞬间，其实都在悄悄治愈着我们。</p>
+                        </div>
+                    </article>
+                </div>
+                <aside class="sidebar">
+                    <div class="sidebar-title"><span>🔥</span> 热门话题</div>
+                    <div class="hot-topic-item">
+                        <span class="hot-num">1</span>
+                        <h4>你最近一次真正开心是什么时候？</h4>
+                        <span class="hot-count">328 讨论</span>
+                    </div>
+                    <div class="hot-topic-item">
+                        <span class="hot-num">2</span>
+                        <h4>给三年前的自己发一条短讯</h4>
+                        <span class="hot-count">256 讨论</span>
+                    </div>
+                    <div class="hot-topic-item">
+                        <span class="hot-num">3</span>
+                        <h4>哪个瞬间让你觉得人间值得？</h4>
+                        <span class="hot-count">214 讨论</span>
+                    </div>
+                    <div class="hot-topic-item">
+                        <span class="hot-num">4</span>
+                        <h4>如何与焦虑和平共处？</h4>
+                        <span class="hot-count">187 讨论</span>
+                    </div>
+                    <div class="hot-topic-item">
+                        <span class="hot-num">5</span>
+                        <h4>分享一本治愈你的书</h4>
+                        <span class="hot-count">152 讨论</span>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- 心灵语录 -->
+    <section class="section quote-section">
+        <div class="container">
+            <div class="section-title-wrap">
+                <h2 class="section-title">心灵语录</h2>
+                <p class="section-subtitle">一句话，也许就能点亮一天的心情</p>
+            </div>
+            <div class="quote-grid">
+                <div class="quote-card">
+                    <p>“你不需要很厉害才能开始，但你需要开始才能很厉害。”</p>
+                    <span class="author">—— 心语社区</span>
+                </div>
+                <div class="quote-card">
+                    <p>“万物皆有裂痕，那是光照进来的地方。”</p>
+                    <span class="author">—— 莱昂纳德·科恩</span>
+                </div>
+                <div class="quote-card">
+                    <p>“请相信，所有的失去，都会以另一种方式归来。”</p>
+                    <span class="author">—— 心语读者</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 社区邀请 -->
+    <section class="community-cta">
+        <div class="container">
+            <h2>加入世说心语，让心事不再孤单</h2>
+            <p>这里没有评判与嘲笑，只有倾听与理解。无论你正处于人生的哪个阶段，都欢迎你在这里留下自己的声音。</p>
+            <a href="#" class="btn-light">立即加入社区</a>
+        </div>
+    </section>
+
+    <!-- FAQ 常见问题 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title-wrap">
+                <h2 class="section-title">关于世说心语</h2>
+                <p class="section-subtitle">你可能想了解的事</p>
+            </div>
+            <div class="faq-wrap">
+                <div class="faq-item">
+                    <h3>世说心语是一个什么样的网站？</h3>
+                    <p>世说心语是一个以心灵成长、情感表达和生活哲思为主题的原创内容社区。我们分享温暖的文章，也提供匿名倾诉的空间，旨在帮助人们在快节奏的生活中找回内心的平静与力量。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>我可以在平台上发表自己的文章吗？</h3>
+                    <p>当然可以！我们非常欢迎热爱文字、有表达欲的朋友投稿。你可以通过“写心情”功能直接创作，也可以发送邮件至编辑邮箱。所有投稿都会经过认真审核，优质内容将获得推荐。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>如何匿名参与情感信箱栏目？</h3>
+                    <p>在情感信箱页面，你可以选择匿名填写你的困惑与故事。编辑团队会定期整理并给予真诚的回复，你的隐私将得到完全保护，不会公开任何个人信息。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>内容更新频率是怎样的？</h3>
+                    <p>目前我们保持每周更新原创随笔与情感回复，同时每天会在社区推荐一篇精选文章。热门话题讨论则实时更新，确保社区保持活跃与温度。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>世说心语</h4>
+                <ul>
+                    <li>关于我们</li>
+                    <li>编辑团队</li>
+                    <li>联系方式</li>
+                    <li>加入我们</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>内容栏目</h4>
+                <ul>
+                    <li>深夜随笔</li>
+                    <li>情感信箱</li>
+                    <li>成长手记</li>
+                    <li>心灵语录</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>社区指南</h4>
+                <ul>
+                    <li>投稿须知</li>
+                    <li>评论规范</li>
+                    <li>隐私保护</li>
+                    <li>免责声明</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关注我们</h4>
+                <ul>
+                    <li>微信公众号</li>
+                    <li>微博超话</li>
+                    <li>小红书账号</li>
+                    <li>RSS 订阅</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 世说心语 · 用心书写，以语传情。本站内容均为原创或获得授权，请勿随意转载。</p>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+                      </html>
